@@ -369,7 +369,7 @@ for (( counter = 1; counter <= count; counter++ )); do
 
     if [ "$(qvm-features "$qube" os)" != "Windows" ]; then
         echo_info "Completing setup of Qubes Windows Tools..."
-        until qvm-start "$qube"; do
+        until qvm-start --cdrom "$resources_qube:$resources_dir/tools/auto-qwt.iso" "$qube"; do
             echo_err "Failed to start $qube! Not enough memory? Retrying in 10 seconds..."
             sleep 10
         done
